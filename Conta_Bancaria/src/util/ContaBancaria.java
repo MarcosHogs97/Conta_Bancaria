@@ -76,7 +76,7 @@ public class ContaBancaria {
 			break;
 		case 'n':
 			System.out.println("Obrigado pela preferencia!!");
-			System.out.println("Aqui esta os dados da sua conta!");
+			System.out.println("Aqui esta os dados da sua conta!\n");
 			informacaoConta();
 			break;
 		default:
@@ -108,6 +108,7 @@ public class ContaBancaria {
 	}
 	
 	public String toString(){
-		return "Conta: " + String.format("%.2f", getIdConta())  + "\nNome do titular: " + String.format("%.2f",getNomeTitular())  + "\nSaldo: R$ " + String.format("%.2f",getDepositoInicial());
+		return "Conta: " + getIdConta()  + "\nNome do titular: " + getNomeTitular() 
+		+ "\nSaldo: R$ " + String.format("%.2f",getDepositoInicial());
 	}
 }
