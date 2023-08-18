@@ -63,8 +63,7 @@ public class ContaBancaria {
 	}
 	
 	//metodo para validação
-	public void validacaoDeEntrada(String nome, int idConta,Scanner sc) {
-		
+	public void validacaoDeEntrada(String nome, int idConta,Scanner sc) {		
 		if(nome != "" && idConta >= 0) {
 			escolhaDepositoInicial(sc);
 			
@@ -80,19 +79,18 @@ public class ContaBancaria {
 	
 	//metodo para escolher se quer ou nao depositar um valor inicial.
 	public void escolhaDepositoInicial(Scanner sc) {
-		System.out.println("Gostaria de efetuar o deposito inicial? (s/n)");
+		System.out.println("Gostaria de efetuar o deposito inicial? ( s / n )");
 		char resposta = sc.next().charAt(0);
-		
 		switch (resposta) {
-		case 's':
+		case 's','S':
 			System.out.print("Informe o valor que deseja depositar: ");
 			double deposito = sc.nextDouble();
 			deposito(deposito);
 			informacaoConta();
 			break;
-		case 'n':
+		case 'n','N':
 			System.out.println("Obrigado pela preferencia!!");
-			System.out.println("Aqui esta os dados da sua conta!\n");
+			System.out.println("Aqui esta os dados da sua conta!");
 			informacaoConta();
 			break;
 		default:
@@ -106,21 +104,21 @@ public class ContaBancaria {
 	public void depositar(Scanner sc) {
 		System.out.print("Insira um valor para depósito: ");
 		double deposito = sc.nextDouble();
-		deposito(deposito);
+		deposito(deposito);		
 	}
 	
 	//metodo para retirar. 
 	public void retirada(Scanner sc) {
 		System.out.print("Insira um valor para retirada: ");
 		double retirada = sc.nextDouble();
-		saques(retirada);
+		saques(retirada);		
 	}
 	
 	//metodo para exibir as informaçoes da conta.
 	public void informacaoConta() {
-		System.out.println("=============================================");
+		System.out.println("========= Informações da conta ==============");
 		System.out.println(toString());
-		System.out.println("=============================================");
+		System.out.println("*===========================================*\n");
 	}
 	
 	public String toString(){
