@@ -1,5 +1,6 @@
 package util;
-
+//Desenvolvedor: Marcos Henrique O. G. da Silva.
+//Github: https://github.com/MarcosHogs97/Conta_Bancaria
 import java.util.Scanner;
 
 public class ContaBancaria {
