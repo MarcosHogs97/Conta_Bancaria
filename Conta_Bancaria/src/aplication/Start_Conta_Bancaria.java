@@ -9,7 +9,7 @@ public class Start_Conta_Bancaria {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ContaBancaria conta = new ContaBancaria();
+		ContaBancaria conta = new ContaBancaria(null,0);
 		
 		conta.startAplication(sc);
 		

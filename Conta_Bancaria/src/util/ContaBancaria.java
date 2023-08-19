@@ -9,9 +9,7 @@ public class ContaBancaria {
 	private double depositoInicial;
 	private static final double taxa = 5;
 	
-	public ContaBancaria() {
-		
-	}
+
 	//construto personalizado para 2 parametros.
 	public ContaBancaria(String nomeTitular,int idConta){
 		this.nomeTitular = nomeTitular;
@@ -63,8 +61,8 @@ public class ContaBancaria {
 	}
 	
 	//metodo para validação
-	public void validacaoDeEntrada(String nome, int idConta,Scanner sc) {		
-		if(nome != "" && idConta >= 0) {
+	public void validacaoDeEntrada(String nomeTitular, int idConta,Scanner sc) {		
+		if(nomeTitular != "" && idConta >= 0) {
 			escolhaDepositoInicial(sc);
 			
 			depositar(sc);
@@ -73,7 +71,7 @@ public class ContaBancaria {
 			retirada(sc);
 			 informacaoConta();
 		}else {
-			System.out.println("Voce nao pode criar uma conta sem nome ou id!!");
+			System.out.println("Voce nao pode criar uma conta sem o nome ou id!!");
 		}
 	}
 	
@@ -89,7 +87,6 @@ public class ContaBancaria {
 			informacaoConta();
 			break;
 		case 'n','N':
-			System.out.println("Obrigado pela preferencia!!");
 			System.out.println("Aqui esta os dados da sua conta!");
 			informacaoConta();
 			break;
