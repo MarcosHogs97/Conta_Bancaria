@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ContaBancaria {
 	private String nomeTitular;
 	private int idConta;
-	private double depositoInicial;
+	private double saldo;
 	private static final double taxa = 5;
 	
 
@@ -14,7 +14,7 @@ public class ContaBancaria {
 	public ContaBancaria(String nomeTitular,int idConta){
 		this.nomeTitular = nomeTitular;
 		this.idConta = idConta;
-		this.depositoInicial = 0;
+		this.saldo = 0;
 	}
 	
 	//get e set
@@ -34,46 +34,33 @@ public class ContaBancaria {
 		this.idConta = idConta;
 	}
 
-	public double getDepositoInicial() {
-		return depositoInicial;
+	public double getSaldo() {
+		return saldo;
 	}
 
 	//deposito e saques
-	public void deposito(double depositoInicial) {
-		this.depositoInicial += depositoInicial;
+	public void deposito(double deposito) {
+		this.saldo += deposito;
 	}
-	public void saques(double depositoInicial) {
-		this.depositoInicial -= (depositoInicial + taxa);
+	public void saques(double saques) {
+		this.saldo -= (saques + taxa);
 	}
 	
 	//Metodo para iniciar a aplicação.
 	public void startAplication(Scanner sc) {	
 		System.out.print("Informe o nome do titular: ");
-		String nome = sc.nextLine();
+		String nome = sc.next();
 		setNomeTitular(nome);
-		
 		System.out.print("Informe o id da conta: ");
 		int id = sc.nextInt();
 		setIdConta(id);
 		
-		validacaoDeEntrada(nome, id, sc);
+		escolhaDepositoInicial(sc);	
+		depositar(sc);	
+		retirada(sc);
 		
 	}
-	
-	//metodo para validação
-	public void validacaoDeEntrada(String nomeTitular, int idConta,Scanner sc) {		
-		if(nomeTitular != "" && idConta >= 0) {
-			escolhaDepositoInicial(sc);
-			
-			depositar(sc);
-			informacaoConta();
-			
-			retirada(sc);
-			 informacaoConta();
-		}else {
-			System.out.println("Voce nao pode criar uma conta sem o nome ou id!!");
-		}
-	}
+
 	
 	//metodo para escolher se quer ou nao depositar um valor inicial.
 	public void escolhaDepositoInicial(Scanner sc) {
@@ -101,25 +88,27 @@ public class ContaBancaria {
 	public void depositar(Scanner sc) {
 		System.out.print("Insira um valor para depósito: ");
 		double deposito = sc.nextDouble();
-		deposito(deposito);		
+		deposito(deposito);	
+		informacaoConta();
 	}
 	
 	//metodo para retirar. 
 	public void retirada(Scanner sc) {
 		System.out.print("Insira um valor para retirada: ");
 		double retirada = sc.nextDouble();
-		saques(retirada);		
+		saques(retirada);
+		informacaoConta();
 	}
 	
 	//metodo para exibir as informaçoes da conta.
 	public void informacaoConta() {
-		System.out.println("========= Informações da conta ==============");
+		System.out.println("\n========= Informações da conta ==============");
 		System.out.println(toString());
 		System.out.println("*===========================================*\n");
 	}
 	
 	public String toString(){
 		return "Conta: " + getIdConta()  + "\nNome do titular: " + getNomeTitular() 
-		+ "\nSaldo: R$ " + String.format("%.2f",getDepositoInicial());
+		+ "\nSaldo: R$ " + String.format("%.2f",getSaldo());
 	}
 }
